@@ -79,7 +79,7 @@ def create_new_submission_string(
     new_submission_string = (
         submission_string.replace("$RUN_ID", run_id)
         .replace("$SWIFT_PATH", swift_path)
-        .replace("$PARAMETER_FILE", parameter_file_name)
+        .replace("$PARAMETER_FILE", f"../{parameter_file_name}")
     )
 
     return new_submission_string
