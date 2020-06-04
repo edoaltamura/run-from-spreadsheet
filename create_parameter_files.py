@@ -100,6 +100,8 @@ if __name__ == "__main__":
                 if os.path.exists(row["Run ID"]):
                     print(f"Deleting {row['Run ID']}")
                     shutil.rmtree(f"./{row['Run ID']}")
+        else:
+            print("Validation failed, exiting.")
 
     else:
         for index, row in spreadsheet.iterrows():
