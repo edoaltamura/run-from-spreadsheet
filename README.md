@@ -19,3 +19,6 @@ that uses the following special parameters
 + `$RUN_ID` - ID for the run
 + `$PARAMETER_FILE` - the parameter file name
 
+Don't forget to change the directory paths in your
+parameter file to include a relative change to one directory
+higher (e.g. `../output_list.txt`).
