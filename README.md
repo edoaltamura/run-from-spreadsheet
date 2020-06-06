@@ -22,3 +22,9 @@ that uses the following special parameters
 Don't forget to change the directory paths in your
 parameter file to include a relative change to one directory
 higher (e.g. `../output_list.txt`).
+
+Finally, you can create a submission script to run VELOCIraptor on your
+outputs in postprocessing by using the `create_vr_slurm_scripts.py` file.
+Note that this assumes that you run it from the same directory as the others
+(i.e. one above the `Run ID` directories that `create_parameter_files.py`
+created).
