@@ -179,6 +179,7 @@ def create_velociraptor_invocation(
     velociraptor_path: str,
     config_path: str,
     catalogue_basename: str,
+    snapshot_basename: str,
 ) -> str:
     """
     Create velociraptor invocation string based on snapshot names.
@@ -187,7 +188,8 @@ def create_velociraptor_invocation(
     return "\n".join(
         [
             (
-                f"{velociraptor_path} -i {snapshot_name} -I 2 -o {catalogue_basename} "
+                f"{velociraptor_path} -i {snapshot_name} -I 2 "
+                f"-o {snapshot_name.replace(snapshot_basename, catalogue_basename)} "
                 f"-C {config_path}"
             )
             for snapshot_name in snapshot_names
@@ -270,6 +272,7 @@ if __name__ == "__main__":
                     velociraptor_path=args.velociraptor_path,
                     config_path=args.config,
                     catalogue_basename=args.catalogue,
+                    snapshot_basename=args.basename,
                 ),
             ),
             run_id=row["Run ID"],
