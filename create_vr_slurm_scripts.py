@@ -22,8 +22,9 @@ parser = ap.ArgumentParser(
         "to."
     ),
     epilog=(
-        "Example usage: python3 create_slurm_scripts.py -s tests.csv "
-        "-p eagle_25.yml -t submission.slurm -x /path/to/swift"
+        "Example usage: python3 create_vr_slurm_scripts.py "
+        "-t velociraptor_template.slurm -s runs.csv -x /path/to/vr "
+        "-C /path/to/config -l ~/Desktop/output_list.txt"
     ),
 )
 
