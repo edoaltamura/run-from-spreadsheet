@@ -79,7 +79,7 @@ def create_new_submission_string(
     new_submission_string = (
         submission_string.replace("$RUN_ID", run_id)
         .replace("$SWIFT_PATH", swift_path)
-        .replace("$PARAMETER_FILE", f"{parameter_file_name}")
+        .replace("$PARAMETER_FILE", f"config/{parameter_file_name}")
     )
 
     return new_submission_string
@@ -104,7 +104,7 @@ if __name__ == "__main__":
     print(f"Spreadsheet selected as: {args.spreadsheet}")
     print(f"Base parameter file selected as: {args.parameter_file}")
     print(f"SWIFT executable at: {args.swift_path}")
-    print(f"Submission templeate at: {args.template}")
+    print(f"Submission template at: {args.template}")
 
     spreadsheet = pd.read_csv(args.spreadsheet)
     submission_string = load_text(args.template)
