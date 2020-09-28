@@ -1,4 +1,6 @@
-Generates runs based on a spreadshseet provided, with
+General instructions
+-----
+Generates runs based on a spreadsheet provided, with
 individual directories.
 
 The spreadsheet should be organised as follows:
@@ -28,3 +30,25 @@ outputs in postprocessing by using the `create_vr_slurm_scripts.py` file.
 Note that this assumes that you run it from the same directory as the others
 (i.e. one above the `Run ID` directories that `create_parameter_files.py`
 created).
+
+Calibration of zoom simulations
+-----
+This repository, forked from Josh's pipeline for calibrating EAGLE-XL 
+periodic cosmological boxes, is adapted to be used for setting up
+zoom simulations. The listing functionality of the spreadsheet allows
+to run a whole sample of group or clusters with different sets of 
+subgrid parameters. Although runs at different resolutions could be 
+gathered in the same `.csv` file, we do recommend the use of separate 
+files, since the set-up pipeline would need to handle significantly 
+different sets of parameters (e.g. particle softenings, particle
+splitting threshold and other resolution-dependent quantities).
+
+The spreadsheet includes explicit specification of the initial 
+conditions file of the individual run, in order to allow for different
+objects in the sample to appear in the same spreadsheet.
+
+Reference model
+-----
+The runs are compared to a reference subgrid model, commonly identified as
+`Ref`. This calibration set of simulations is created such as the sample is
+firstly run with the `Ref` model, in order to then explore departures from it.
