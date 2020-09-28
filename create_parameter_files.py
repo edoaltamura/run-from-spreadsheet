@@ -71,7 +71,7 @@ def write_new_parameter_file(parameter_file: dict, run_id: str, filename: str) -
     Writes a new parameter file to run_id/config/filename.
     """
 
-    with open(f"{run_id}/config/{filename}", "w") as handle:
+    with open(f"{run_id}/config/{os.path.basename(filename)}", "w") as handle:
         yaml.dump(parameter_file, handle, default_flow_style=False)
 
     return

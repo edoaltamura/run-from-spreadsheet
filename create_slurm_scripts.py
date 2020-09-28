@@ -135,6 +135,8 @@ if __name__ == "__main__":
             os.path.join(os.path.dirname(args.spreadsheet), 'vr_config_hydro.cfg'),
             os.path.join(row["Run ID"], 'config', 'vr_config_hydro.cfg')
         )
+        if not os.path.exists(os.path.join(row["Run ID"], 'logs')):
+            os.mkdir(os.path.join(row["Run ID"], 'logs'))
 
     if args.submit:
         validate = input(
