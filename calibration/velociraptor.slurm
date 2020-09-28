@@ -1,5 +1,3 @@
-
-
 #!/bin/bash -l
 
 #SBATCH --ntasks=1

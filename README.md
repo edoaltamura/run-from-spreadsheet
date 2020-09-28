@@ -53,6 +53,9 @@ script as
 ```bash
 source launch_setup.sh
 ```
+**Note**: although the parameter file handling can be adapted for dark-matter-only 
+simulations, the `launch_setup.sh` is optimized for hydro runs. Set-up directories
+for DMO simulations can instead be easily generated using the pipeline for initial conditions.
 
 Reference model
 -----

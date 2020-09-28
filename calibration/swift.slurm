@@ -20,28 +20,13 @@ module load fftw/3.3.7
 module load cosma/2018
 module load cmake
 
-# Make a dmo/hydro switch
-if [[ $PWD == *"hydro"* ]]; then
-  # If this file in "/hydro" subdirectory, use hydro SWIFT and hydro parameter file
-  $SWIFT_PATH \
-  -v 1 \
-  --cosmology \
-  --eagle \
-  --pin \
-  --threads=$SLURM_CPUS_PER_TASK \
-  $PARAMETER_FILE
-fi
-
-if [[ $PWD == *"dmo"* ]]; then
-  # If this file in "/dmo" subdirectory, use dmo SWIFT and dmo parameter file
-  $SWIFT_PATH \
-  -v 1 \
-  --cosmology \
-  --self-gravity \
-  --pin \
-  --threads=$SLURM_CPUS_PER_TASK \
-  $PARAMETER_FILE
-fi
+$SWIFT_PATH \
+    -v 1 \
+    --cosmology \
+    --eagle \
+    --pin \
+    --threads=$SLURM_CPUS_PER_TASK \
+    $PARAMETER_FILE
 
 echo "Job done, info follows."
 sacct -j $SLURM_JOBID --format=JobID,JobName,Partition,AveRSS,MaxRSS,AveVMSize,MaxVMSize,Elapsed,ExitCode
