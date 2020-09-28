@@ -43,6 +43,7 @@ python3 "$old_directory"/create_vr_slurm_scripts.py \
     --basename             "snap"
 
 # Now look for the run directories made since start of script
+cd $data_directory || exit
 time_elapsed=$(( ( ($SECONDS - $time_start) % 60) + 1 ))
 new_directories=$( find "." -type d -cmin -"$time_elapsed" )
 
