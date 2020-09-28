@@ -68,13 +68,16 @@ def create_new_parameter_file(parameter_file: dict, row: pd.core.series.Series) 
 
 def write_new_parameter_file(parameter_file: dict, run_id: str, filename: str) -> None:
     """
-    Writes a new parameter file to run_id/filename.
+    Writes a new parameter file to run_id//config/filename.
     """
 
     if not os.path.exists(run_id):
         os.mkdir(run_id)
 
-    with open(f"{run_id}/{filename}", "w") as handle:
+    if not os.path.exists(f"{run_id}/config"):
+        os.mkdir(f"{run_id}/config")
+
+    with open(f"{run_id}/config/{filename}", "w") as handle:
         yaml.dump(parameter_file, handle, default_flow_style=False)
 
     return
