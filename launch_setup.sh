@@ -46,9 +46,10 @@ new_directories=$( find "." -type d -cmin -"$time_elapsed" )
 
 # Copy common files into run /config subdirectories
 for new_dir in $new_directories; do
-  cp "$template_directory/output_list.txt" "$new_dir/config"
-  cp "$template_directory/select_output.yml" "$new_dir/config"
-  cp "$template_directory/vr_config_$switch_mode.cfg" "$new_dir/config"
+  echo $new_dir
+  cp "$template_directory/output_list.txt" "$new_dir/config/"
+  cp "$template_directory/select_output.yml" "$new_dir/config/"
+  cp "$template_directory/vr_config_$switch_mode.cfg" "$new_dir/config/"
 done
 
 cd "$old_directory" || exit
