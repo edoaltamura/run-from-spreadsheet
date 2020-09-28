@@ -71,10 +71,10 @@ def write_new_parameter_file(parameter_file: dict, run_id: str, filename: str) -
     Writes a new parameter file to run_id//config/filename.
     """
 
-    if not os.path.exists(run_id):
+    if not os.path.isdir(run_id):
         os.mkdir(run_id)
 
-    if not os.path.exists(f"{run_id}/config"):
+    if not os.path.isdir(f"{run_id}/config"):
         os.mkdir(f"{run_id}/config")
 
     with open(f"{run_id}/config/{filename}", "w") as handle:
