@@ -1,4 +1,4 @@
-General instructions
+General functionalities
 -----
 Generates runs based on a spreadsheet provided, with
 individual directories.
@@ -46,6 +46,13 @@ splitting threshold and other resolution-dependent quantities).
 The spreadsheet includes explicit specification of the initial 
 conditions file of the individual run, in order to allow for different
 objects in the sample to appear in the same spreadsheet.
+
+Once the spreadsheet is selected, make sure to look at the `launch_setup.sh` script
+and edit the directory where you wish to set-up the runs. After that, just run the
+script as 
+```bash
+source launch_setup.sh
+```
 
 Reference model
 -----
