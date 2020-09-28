@@ -71,12 +71,6 @@ def write_new_parameter_file(parameter_file: dict, run_id: str, filename: str) -
     Writes a new parameter file to run_id/config/filename.
     """
 
-    if not os.path.isdir(run_id):
-        os.mkdir(run_id)
-
-    if not os.path.isdir(f"{run_id}/config"):
-        os.mkdir(f"{run_id}/config")
-
     with open(f"{run_id}/config/{filename}", "w") as handle:
         yaml.dump(parameter_file, handle, default_flow_style=False)
 
@@ -108,6 +102,18 @@ if __name__ == "__main__":
 
     else:
         for index, row in spreadsheet.iterrows():
+
+            if not os.path.exists(row["Run ID"]):
+                os.mkdir(row["Run ID"])
+
+            if not os.path.exists(f"{row['Run ID']}/config"):
+                os.mkdir(f"{row['Run ID']}/config")
+
+            shutil.copyfile(
+                os.path.join(os.path.dirname(args.spreadsheet), os.path.basename(args.parameter_file)),
+                os.path.join(row["Run ID"], 'config', os.path.basename(args.parameter_file))
+            )
+
             write_new_parameter_file(
                 create_new_parameter_file(parameter_file=parameter_file, row=row),
                 run_id=row["Run ID"],
