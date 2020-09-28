@@ -6,6 +6,7 @@ import argparse as ap
 import pandas as pd
 import os
 import subprocess
+import shutil
 
 parser = ap.ArgumentParser(
     description=(
@@ -119,6 +120,20 @@ if __name__ == "__main__":
             ),
             run_id=row["Run ID"],
             output_filename=args.output,
+        )
+
+        # Set-up common files in /config subdirectory
+        shutil.copyfile(
+            os.path.join(os.path.dirname(args.spreadsheet), 'output_list.txt'),
+            os.path.join(row["Run ID"], 'config', 'output_list.txt')
+        )
+        shutil.copyfile(
+            os.path.join(os.path.dirname(args.spreadsheet), 'select_output.yml'),
+            os.path.join(row["Run ID"], 'config', 'select_output.yml')
+        )
+        shutil.copyfile(
+            os.path.join(os.path.dirname(args.spreadsheet), 'vr_config_hydro.cfg'),
+            os.path.join(row["Run ID"], 'config', 'vr_config_hydro.cfg')
         )
 
     if args.submit:

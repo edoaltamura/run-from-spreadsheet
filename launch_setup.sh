@@ -11,8 +11,6 @@ data_directory="/cosma7/data/dp004/dc-alta2/xl-zooms/hydro"
 # Set-up the submission by storing the original directory and the start time
 old_directory=$(pwd)
 template_directory="$old_directory/calibration"
-time_start=$SECONDS
-
 cd $data_directory
 
 # Make a dmo/hydro switch
@@ -26,6 +24,8 @@ fi
 python3 "$old_directory"/create_parameter_files.py \
     --spreadsheet          "$template_directory"/calibration_-8res.csv \
     --parameter-file       "$template_directory"/swift_params_-8res.yml
+
+cd $data_directory
 
 python3 "$old_directory"/create_slurm_scripts.py \
     --spreadsheet          "$template_directory"/calibration_-8res.csv \
@@ -41,19 +41,5 @@ python3 "$old_directory"/create_slurm_scripts.py \
 #    --catalogue            "snap" \
 #    --output-list          "$template_directory"/output_list.txt \
 #    --basename             "snap"
-
-# Now look for the run directories made since start of script
-cd $data_directory
-time_elapsed=$(( ( ($SECONDS - $time_start) % 60) + 1 ))
-new_directories=$( find "." -type d -cmin -"$time_elapsed" )
-
-# Copy common files into run /config subdirectories
-for new_dir in $new_directories; do
-  cd "$new_dir/config/"
-  cp "$template_directory/output_list.txt" .
-  cp "$template_directory/select_output.yml" .
-  cp "$template_directory/vr_config_$switch_mode.cfg" .
-  cd $data_directory
-done
 
 cd "$old_directory"

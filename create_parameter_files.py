@@ -68,7 +68,7 @@ def create_new_parameter_file(parameter_file: dict, row: pd.core.series.Series) 
 
 def write_new_parameter_file(parameter_file: dict, run_id: str, filename: str) -> None:
     """
-    Writes a new parameter file to run_id//config/filename.
+    Writes a new parameter file to run_id/config/filename.
     """
 
     if not os.path.isdir(run_id):
