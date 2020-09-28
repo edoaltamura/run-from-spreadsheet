@@ -33,14 +33,14 @@ python3 "$old_directory"/create_slurm_scripts.py \
     --template             "$template_directory"/swift.slurm \
     --swift-path           "/cosma7/data/dp004/dc-alta2/xl-zooms/$switch_mode/swiftsim/examples/swift"
 
-python3 "$old_directory"/create_vr_slurm_scripts.py \
-    --spreadsheet          "$template_directory"/calibration_-8res.csv \
-    --template             "$template_directory"/velociraptor.slurm \
-    --velociraptor-path    "/cosma7/data/dp004/dc-alta2/xl-zooms/$switch_mode/VELOCIraptor-STF/stf" \
-    --config               "./config/vr_config_$switch_mode.cfg" \
-    --catalogue            "snap" \
-    --output-list          "$template_directory"/output_list.txt \
-    --basename             "snap"
+#python3 "$old_directory"/create_vr_slurm_scripts.py \
+#    --spreadsheet          "$template_directory"/calibration_-8res.csv \
+#    --template             "$template_directory"/velociraptor.slurm \
+#    --velociraptor-path    "/cosma7/data/dp004/dc-alta2/xl-zooms/$switch_mode/VELOCIraptor-STF/stf" \
+#    --config               "./config/vr_config_$switch_mode.cfg" \
+#    --catalogue            "snap" \
+#    --output-list          "$template_directory"/output_list.txt \
+#    --basename             "snap"
 
 # Now look for the run directories made since start of script
 cd $data_directory
