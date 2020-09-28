@@ -22,16 +22,16 @@ fi
 
 # Create parameter files
 python3 "$old_directory"/create_parameter_files.py \
-    --spreadsheet          "$template_directory"/calibration_-8res.csv \
-    --parameter-file       "$template_directory"/swift_params_-8res.yml
+    --spreadsheet "$template_directory"/calibration_-8res.csv \
+    --parameter-file "$template_directory"/swift_params_-8res.yml
 
 cd $data_directory
 
 python3 "$old_directory"/create_slurm_scripts.py \
-    --spreadsheet          "$template_directory"/calibration_-8res.csv \
-    --parameter-file       "$template_directory"/swift_params_-8res.yml \
-    --template             "$template_directory"/swift.slurm \
-    --swift-path           "/cosma7/data/dp004/dc-alta2/xl-zooms/$switch_mode/swiftsim/examples/swift"
+    --spreadsheet "$template_directory"/calibration_-8res.csv \
+    --parameter-file "$template_directory"/swift_params_-8res.yml \
+    --template "$template_directory"/swift.slurm \
+    --swift-path "/cosma7/data/dp004/dc-alta2/xl-zooms/$switch_mode/swiftsim/examples/swift"
 
 #python3 "$old_directory"/create_vr_slurm_scripts.py \
 #    --spreadsheet          "$template_directory"/calibration_-8res.csv \
