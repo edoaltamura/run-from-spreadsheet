@@ -38,8 +38,7 @@ python3 "$old_directory"/create_vr_slurm_scripts.py \
     --config               "./config/vr_config_$switch_mode.cfg" \
     --catalogue            "snap" \
     --output-list          "$template_directory"/output_list.txt \
-    --basename             "snap" \
-    --overwrite
+    --basename             "snap"
 
 # Now look for the run directories made since start of script
 time_elapsed=$(( ( ($SECONDS - $time_start) % 60) + 1 ))
