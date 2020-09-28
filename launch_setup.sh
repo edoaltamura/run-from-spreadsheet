@@ -6,12 +6,14 @@
 # - create_slurm_scripts.py
 # - create_vr_slurm_scripts.py
 
+data_directory="/cosma7/data/dp004/dc-alta2/xl-zooms/hydro"
+
 # Set-up the submission by storing the original directory and the start time
 old_directory=$(pwd)
 template_directory="$old_directory/calibration"
 time_start=$SECONDS
 
-cd /cosma7/data/dp004/dc-alta2/xl-zooms/hydro || exit
+cd $data_directory || exit
 
 # Make a dmo/hydro switch
 if [[ $(pwd) == *"hydro"* ]]; then
