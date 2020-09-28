@@ -13,7 +13,7 @@ old_directory=$(pwd)
 template_directory="$old_directory/calibration"
 time_start=$SECONDS
 
-cd $data_directory || exit
+cd $data_directory
 
 # Make a dmo/hydro switch
 if [[ $(pwd) == *"hydro"* ]]; then
@@ -43,17 +43,17 @@ python3 "$old_directory"/create_vr_slurm_scripts.py \
     --basename             "snap"
 
 # Now look for the run directories made since start of script
-cd $data_directory || exit
+cd $data_directory
 time_elapsed=$(( ( ($SECONDS - $time_start) % 60) + 1 ))
 new_directories=$( find "." -type d -cmin -"$time_elapsed" )
 
 # Copy common files into run /config subdirectories
 for new_dir in $new_directories; do
-  cd "$new_dir/config/" || exit
+  cd "$new_dir/config/"
   cp "$template_directory/output_list.txt" .
   cp "$template_directory/select_output.yml" .
   cp "$template_directory/vr_config_$switch_mode.cfg" .
-  cd $data_directory || exit
+  cd $data_directory
 done
 
-cd "$old_directory" || exit
+cd "$old_directory"
